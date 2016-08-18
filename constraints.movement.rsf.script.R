@@ -21,11 +21,10 @@
 ### Load workspace
 ###
 
-rm(list=ls())
 setwd("~/Dropbox/constraints/supplement/")
 load("workspace.Rdata") #Load workspace
 source("constraints.MCMC.R") #Load MCMC algorithm
-ls()
+
 
 ###
 ### Libraries and subroutines
@@ -150,7 +149,7 @@ start <- list(mu=mu.start,sigma=c(2300,1000,1400,2700,2700,13000),nu=c(16,2,1.8,
 	a=c(0.7,0.5,0.65,0.5,0.9,0.75),rho=c(0.85,0.75,0.38,0.16,0.2,0.3),phi=400,beta=c(0,-2.1,-0.8))
 
 # Fit model
-n.cores <- 4  # number of cores used for parallel processing
+n.cores <- 7  # number of cores used for parallel processing
 out2 <- constraints.MCMC(seal,S,lu,X.scale,priors,start,tune,n.mcmc=2000,n.cores=n.cores,Cpp=TRUE)	
 out2$keep  # proposal acceptance rate; adjust tuning parameters to achieve values between 0.2 and 0.4
 
