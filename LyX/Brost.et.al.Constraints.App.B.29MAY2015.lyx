@@ -1,0 +1,1123 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\geometry{verbose,letterpaper,tmargin=2.54cm,bmargin=2.54cm,lmargin=2.54cm,rmargin=2.54cm}
+\usepackage{setspace}
+\pagestyle{empty}
+\end_preamble
+\use_default_options true
+\begin_modules
+hanging
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1.0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Brost, B.
+ M., M.
+ B.
+ Hooten, E.
+ M.
+ Hanks, and R.
+ J.
+ Small.
+ 2016.
+ Animal movement constraints improve resource selection inference in the
+ presence of telemetry error.
+ Ecology.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Appendix B.
+ Full-conditional distributions and Markov chain Monte Carlo algorithm for
+ parameter estimation.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The model we propose is well-suited to a Bayesian analysis using Markov
+ chain Monte Carlo (MCMC) methods.
+ Such an approach estimates the joint posterior distribution by sampling
+ iteratively from the full-conditional distributions.
+ Below, we use bracket notation to denote a conditional probability distribution.
+ For example, 
+\begin_inset Formula $[\text{x}\vert\text{y}]$
+\end_inset
+
+ indicates the conditional probability distribution of x given the parameter
+ y.
+ The notation 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ represents the data and other parameters in the model.
+ The full-conditional distributions for each of the model parameters are
+\begin_inset Formula 
+\begin{eqnarray*}
+[\sigma_{c}\vert\cdot] & \sim & \prod_{t}\left(p_{t}\times t(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\boldsymbol{\Sigma}_{c},\nu_{c})+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\widetilde{\boldsymbol{\Sigma}}_{c},\nu_{c}\right)\right)\times\text{Uniform}\left(\sigma_{c}\vert0,u_{\sigma}\right)\\
+{}[a_{c}\vert\cdot] & \sim & \prod_{t}\left(p_{t}\times t(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\boldsymbol{\Sigma}_{c},\nu_{c})+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\widetilde{\boldsymbol{\Sigma}}_{c},\nu_{c}\right)\right)\times\text{Uniform}\left(a_{c}\vert0,u_{a}\right)\\
+{}[\rho_{c}\vert\cdot] & \sim & \prod_{t}\left(p_{t}\times t(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\boldsymbol{\Sigma}_{c},\nu_{c})+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\widetilde{\boldsymbol{\Sigma}}_{c},\nu_{c}\right)\right)\times\text{Uniform}\left(\rho_{c}\vert0,u_{\rho}\right)\\
+{}[\nu_{c}\vert\cdot] & \sim & \prod_{t}\left(p_{t}\times t(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\boldsymbol{\Sigma}_{c},\nu_{c})+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\widetilde{\boldsymbol{\Sigma}}_{c},\nu_{c}\right)\right)\times\text{Uniform}\left(\nu_{c}\vert0,u_{\nu}\right)\\
+{}[\boldsymbol{\mu}_{t}\vert\cdot] & \sim & \left(\boldsymbol{\mu}_{t}\left|\frac{\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu}_{t})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu}_{t},\boldsymbol{\mu}_{t-\Delta_{t}}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}\right)\right\} d\boldsymbol{\mu}}\right.\right)\times\left(\boldsymbol{\mu}_{t+\Delta_{t}}\left|\frac{\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu}_{t+\Delta_{t}})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu}_{t+\Delta_{t}},\boldsymbol{\mu}_{t}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t}\right)\right\} d\boldsymbol{\mu}}\right.\right)\\
+ &  & \qquad\times\left(p_{t}\times t(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\boldsymbol{\Sigma}_{c},\nu_{c})+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t},\widetilde{\boldsymbol{\Sigma}}_{c},\nu_{c}\right)\right)\text{, for \ensuremath{t=\Delta_{t},\ldots,T-\Delta_{t}}}\\
+{}[\phi\vert\cdot] & \sim & \prod_{t}\left(\boldsymbol{\mu}_{t}\left|\frac{\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu}_{t})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu}_{t},\boldsymbol{\mu}_{t-\Delta_{t}}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}\right)\right\} d\boldsymbol{\mu}}\right.\right)\times\text{Uniform}\left(\phi\vert0,u_{\phi}\right)\\
+{}[\boldsymbol{\beta}\vert\cdot] & \sim & \prod_{t}\left(\boldsymbol{\mu}_{t}\left|\frac{\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu}_{t})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu}_{t},\boldsymbol{\mu}_{t-\Delta_{t}}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}\right)\right\} d\boldsymbol{\mu}}\right.\right)\times\text{N}\left(\boldsymbol{\beta}\vert\boldsymbol{\mu}_{\beta},\tau^{2}\mathbf{I}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The parameters 
+\begin_inset Formula $\sigma_{c}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{c}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu_{c}$
+\end_inset
+
+ are estimated for each error class 
+\begin_inset Formula $c$
+\end_inset
+
+; therefore, the products in their full-conditionals are only over observations
+ 
+\begin_inset Formula $\mathbf{s}_{tc}$
+\end_inset
+
+ within a single error class.
+ The full-conditionals above are non-conjugate and must be sampled using
+ Metropolis-Hastings updates.
+ Normalizing constants cancel in the Metropolis-Hastings ratio, and thus
+ may be omitted in the pseudocode below (e.g., the uniform prior distributions).
+ One can implement a MCMC algorithm to estimate the parameters of the observatio
+n and process models as follows:
+\end_layout
+
+\begin_layout Enumerate
+Define initial values for all model parameters: 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(0)}$
+\end_inset
+
+ for 
+\begin_inset Formula $t=0,\ldots,T$
+\end_inset
+
+; 
+\begin_inset Formula $\sigma_{c}^{(0)}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{c}^{(0)}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{c}^{(0)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu_{c}^{(0)}$
+\end_inset
+
+ for 
+\begin_inset Formula $c=\text{3, 2, 1, 0, A, and B}$
+\end_inset
+
+ (i.e., 
+\begin_inset Formula $c$
+\end_inset
+
+ indexes Argos location quality class); 
+\begin_inset Formula $\phi^{(0)}$
+\end_inset
+
+; and 
+\begin_inset Formula $\boldsymbol{\beta}^{(0)}$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\tilde{t}\in\{t_{1}\ldots,t_{m}\}$
+\end_inset
+
+, where 
+\begin_inset Formula $t_{1},\ldots,t_{m}$
+\end_inset
+
+ are the times of locations collected for a single error class.
+ Update the observation model parameters (Eqs.
+ 1 and 2) for the corresponding error class by:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Let 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(k)}=\left(\sigma_{c}^{(k-1)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}}\\
+\rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}} & a_{c}^{(k-1)}
+\end{array}\right]
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{eqnarray*}
+\widetilde{\boldsymbol{\Sigma}}_{c}^{(k)} & = & \left(\sigma_{c}^{(k-1)}\right)^{2}\left[\begin{array}{cc}
+1 & -\rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}}\\
+-\rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}} & a_{c}^{(k-1)}
+\end{array}\right],\\
+ & = & \mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H^{\prime}}
+\end{eqnarray*}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\mathbf{H=}\left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sample 
+\begin_inset Formula $\sigma_{c}^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[\sigma_{c}^{(*)}\vert\sigma_{c}^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(\sigma_{c}^{(*)}\vert\sigma_{c}^{(k-1)},\tau_{\sigma}^{2}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{\sigma}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ If 
+\begin_inset Formula $\sigma_{c}^{(*)}\in[0,u_{\sigma}]$
+\end_inset
+
+, calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\[
+r_{\sigma}=\frac{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(*)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(*)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)}{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)},
+\]
+
+\end_inset
+
+where
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(*)}=\left(\sigma_{c}^{(*)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}}\\
+\rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}} & a_{c}^{(k-1)}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Note that the ratio 
+\begin_inset Formula $r_{\sigma}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $\sigma_{c}^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{c}^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{\sigma}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $\sigma_{c}^{(k)}=\sigma_{c}^{(*)}$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(k)}=\left(\sigma_{c}^{(k)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}}\\
+\rho_{c}^{(k-1)}\sqrt{a_{c}^{(k-1)}} & a_{c}^{(k-1)}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Otherwise, let 
+\begin_inset Formula $\sigma_{c}^{(k)}=\sigma_{c}^{(k-1)}$
+\end_inset
+
+ if 
+\begin_inset Formula $r_{\sigma}<u$
+\end_inset
+
+, or if 
+\begin_inset Formula $\sigma_{c}^{(*)}\notin[0,u_{\sigma}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sample 
+\begin_inset Formula $a_{c}^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[a_{c}^{(*)}\vert a_{c}^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(a_{c}^{(*)}\vert a_{c}^{(k-1)},\tau_{a}^{2}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{a}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ If 
+\begin_inset Formula $a_{c}^{(*)}\in[0,u_{a}]$
+\end_inset
+
+, calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\[
+r_{a}=\frac{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(*)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(*)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)}{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)},
+\]
+
+\end_inset
+
+where
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(*)}=\left(\sigma_{c}^{(k)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(k-1)}\sqrt{a_{c}^{(*)}}\\
+\rho_{c}^{(k-1)}\sqrt{a_{c}^{(*)}} & a_{c}^{(*)}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Note that the ratio 
+\begin_inset Formula $r_{a}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $a_{c}^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{c}^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{a}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $a_{c}^{(k)}=a_{c}^{(*)}$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(k)}=\left(\sigma_{c}^{(k)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(k-1)}\sqrt{a_{c}^{(k)}}\\
+\rho_{c}^{(k-1)}\sqrt{a_{c}^{(k)}} & a_{c}^{(k)}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Otherwise, let 
+\begin_inset Formula $a_{c}^{(k)}=a_{c}^{(k-1)}$
+\end_inset
+
+ if 
+\begin_inset Formula $r_{a}<u$
+\end_inset
+
+, or if 
+\begin_inset Formula $a_{c}^{(*)}\notin[0,u_{a}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sample 
+\begin_inset Formula $\rho_{c}^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[\rho_{c}^{(*)}\vert\rho_{c}^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(\rho_{c}^{(*)}\vert\rho_{c}^{(k-1)},\tau_{\rho}^{2}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{\rho}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ If 
+\begin_inset Formula $\rho_{c}^{(*)}\in[0,u_{\rho}]$
+\end_inset
+
+, calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\[
+r_{\rho}=\frac{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(*)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(*)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)}{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)},
+\]
+
+\end_inset
+
+where
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(*)}=\left(\sigma_{c}^{(k)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(*)}\sqrt{a_{c}^{(k)}}\\
+\rho_{c}^{(*)}\sqrt{a_{c}^{(k)}} & a_{c}^{(k)}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Note that the ratio 
+\begin_inset Formula $r_{\rho}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $\rho_{c}^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{c}^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{\rho}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $\rho_{c}^{(k)}=\rho_{c}^{(*)}$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{c}^{(k)}=\left(\sigma_{c}^{(k)}\right)^{2}\left[\begin{array}{cc}
+1 & \rho_{c}^{(k)}\sqrt{a_{c}^{(k)}}\\
+\rho_{c}^{(k)}\sqrt{a_{c}^{(k)}} & a_{c}^{(k)}
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Otherwise, let 
+\begin_inset Formula $\rho_{c}^{(k)}=\rho_{c}^{(k-1)}$
+\end_inset
+
+ if 
+\begin_inset Formula $r_{\rho}<u$
+\end_inset
+
+, or if 
+\begin_inset Formula $\rho_{c}^{(*)}\notin[0,u_{\rho}]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Sample 
+\begin_inset Formula $\nu_{c}^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[\nu_{c}^{(*)}\vert\nu_{c}^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(\nu_{c}^{(*)}\vert\nu_{c}^{(k-1)},\tau_{\nu}^{2}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{\nu}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ If 
+\begin_inset Formula $\nu_{c}^{(*)}\in[0,u_{\nu}]$
+\end_inset
+
+, calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\[
+r_{\nu}=\frac{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(*)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H^{\prime}},\nu_{c}^{(*)}\right)\right)}{\prod_{\tilde{t}}\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k-1)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H^{\prime}},\nu_{c}^{(k-1)}\right)\right)}.
+\]
+
+\end_inset
+
+Note that the ratio 
+\begin_inset Formula $r_{\nu}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $\nu_{c}^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu_{c}^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{\nu}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $\nu_{c}^{(k)}=\nu_{c}^{(*)}$
+\end_inset
+
+.
+ Otherwise, let 
+\begin_inset Formula $\nu_{c}^{(k)}=\nu_{c}^{(k-1)}$
+\end_inset
+
+ if 
+\begin_inset Formula $r_{\nu}<u$
+\end_inset
+
+, or if 
+\begin_inset Formula $\nu_{c}^{(*)}\notin[0,u_{\nu}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Repeat step 2 for each error class 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sample 
+\begin_inset Formula $\phi^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[\phi^{(*)}\vert\phi^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(\phi^{(*)}\vert\phi^{(k-1)},\tau_{\phi}^{2}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{\phi}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ If 
+\begin_inset Formula $\phi^{(*)}\in[0,u_{\phi}]$
+\end_inset
+
+, calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\[
+r_{\phi}=\frac{\prod_{t=0}^{T}\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t}^{(k-1)}\right)\boldsymbol{\beta}^{(k-1)}-\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(*)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k-1)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(*)}\right)\right\} d\boldsymbol{\mu}}\right)}{\prod_{t=0}^{T}\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t}^{(k-1)}\right)\boldsymbol{\beta}^{(k-1)}-\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k-1)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k-1)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k-1)}\right)\right\} d\boldsymbol{\mu}}\right)},
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(*)}\right)=\frac{d\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)}\right)}{\Delta_{t}\phi^{(*)}}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k-1)}\right)=\frac{d\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)}\right)}{\Delta_{t}\phi^{(k-1)}}.
+\]
+
+\end_inset
+
+Note that the ratio 
+\begin_inset Formula $r_{\phi}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $\phi^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{\phi}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $\phi^{(k)}=\phi^{(*)}$
+\end_inset
+
+.
+ Otherwise, let 
+\begin_inset Formula $\phi^{(k)}=\phi^{(k-1)}$
+\end_inset
+
+ if 
+\begin_inset Formula $r_{\phi}<u$
+\end_inset
+
+, or if 
+\begin_inset Formula $\phi^{(*)}\notin[0,u_{\phi}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sample 
+\begin_inset Formula $\boldsymbol{\beta}^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[\boldsymbol{\beta}^{(*)}\vert\boldsymbol{\beta}^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(\boldsymbol{\beta}^{(*)}\vert\boldsymbol{\beta}^{(k-1)},\tau_{\beta}^{2}\mathbf{I}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{\beta}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ Calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\[
+r_{\beta}=\frac{\prod_{t=0}^{T}\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t}^{(k-1)}\right)\boldsymbol{\beta}^{(*)}-\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(*)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k)}\right)\right\} d\boldsymbol{\mu}}\right)\times\text{N}\left(\boldsymbol{\beta}^{(*)}\vert\boldsymbol{\mu}_{\beta},\tau^{2}\mathbf{I}\right)}{\prod_{t=0}^{T}\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t}^{(k-1)}\right)\boldsymbol{\beta}^{(k-1)}-\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k-1)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k-1)},\phi^{(k)}\right)\right\} d\boldsymbol{\mu}}\right)\times\text{N}\left(\boldsymbol{\beta}^{(k-1)}\vert\boldsymbol{\mu}_{\beta},\tau^{2}\mathbf{I}\right)}.
+\]
+
+\end_inset
+
+Note that the ratio 
+\begin_inset Formula $r_{\beta}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $\boldsymbol{\beta}^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\beta}^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{\beta}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $\boldsymbol{\beta}^{(k)}=\boldsymbol{\beta}^{(*)}$
+\end_inset
+
+.
+ Otherwise, let 
+\begin_inset Formula $\boldsymbol{\beta}^{(k)}=\boldsymbol{\beta}^{(k-1)}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+For each 
+\begin_inset Formula $t=\Delta_{t},\ldots T-\Delta_{t}$
+\end_inset
+
+ in sequence, sample 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(*)}$
+\end_inset
+
+ from a proposal distribution 
+\begin_inset Formula $[\boldsymbol{\mu}_{t}^{(*)}\vert\boldsymbol{\mu}_{t}^{(k-1)}]$
+\end_inset
+
+ (e.g., 
+\begin_inset Formula $\text{N}\left(\boldsymbol{\mu}_{t}^{(*)}\vert\boldsymbol{\mu}_{t}^{(k-1)},\tau_{\mu}^{2}\mathbf{I}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\tau_{\mu}^{2}$
+\end_inset
+
+ is a tuning parameter).
+ If 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(*)}\in{\cal S}$
+\end_inset
+
+, calculate the Metropolis-Hastings ratio as
+\begin_inset Formula 
+\begin{eqnarray*}
+r_{\mu} & = & \frac{\left[\boldsymbol{\mu}_{t}^{(*)}\vert\boldsymbol{\mu}_{t-\Delta_{t}}^{(k)}\right]\times\left[\boldsymbol{\mu}_{t+\Delta_{t}}^{(k-1)}\vert\boldsymbol{\mu}_{t}^{(*)}\right]\times\left[\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(*)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k)}\right]}{\left[\boldsymbol{\mu}_{t}^{(k-1)}\vert\boldsymbol{\mu}_{t-\Delta_{t}}^{(k)}\right]\times\left[\boldsymbol{\mu}_{t+\Delta_{t}}^{(k-1)}\vert\boldsymbol{\mu}_{t}^{(k-1)}\right]\times\left[\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k)}\right]}\\
+ & = & \frac{\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t}^{(*)}\right)\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu}_{t}^{(*)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k)},\phi^{(k)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k)},\phi^{(k)}\right)\right\} d\boldsymbol{\mu}}\right)}{\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t}^{(k-1)}\right)\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k)},\phi^{(k)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t-\Delta_{t}}^{(k)},\phi^{(k)}\right)\right\} d\boldsymbol{\mu}}\right)}\times\\
+ &  & \frac{\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t+\Delta_{t}}^{(k-1)}\right)\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu}_{t+\Delta_{t}}^{(k-1)},\boldsymbol{\mu}_{t}^{(*)},\phi^{(k)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t}^{(*)},\phi^{(k)}\right)\right\} d\boldsymbol{\mu}}\right)}{\left(\frac{\exp\left\{ \mathbf{x}^{\prime}\left(\boldsymbol{\mu}_{t+\Delta_{t}}^{(k-1)}\right)\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu}_{t+\Delta_{t}}^{(k-1)},\boldsymbol{\mu}_{t}^{(k-1)},\phi^{(k)}\right)\right\} }{\int_{{\cal S}}\exp\left\{ \mathbf{x}^{\prime}(\boldsymbol{\mu})\boldsymbol{\beta}^{(k)}-\eta\left(\boldsymbol{\mu},\boldsymbol{\mu}_{t}^{(k-1)},\phi^{(k)}\right)\right\} d\boldsymbol{\mu}}\right)}\times\\
+ &  & \frac{\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(*)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(*)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H}^{\prime},\nu_{c}^{(k)}\right)\right)}{\left(p_{t}\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\boldsymbol{\Sigma}_{c}^{(k)},\nu_{c}^{(k)}\right)+(1-p_{t})\times t\left(\mathbf{s}_{tc}\vert\boldsymbol{\mu}_{t}^{(k-1)},\mathbf{H}\boldsymbol{\Sigma}_{c}^{(k)}\mathbf{H}^{\prime},\nu_{c}^{(k)}\right)\right)}
+\end{eqnarray*}
+
+\end_inset
+
+Note that the ratio 
+\begin_inset Formula $r_{\mu}$
+\end_inset
+
+ assumes the proposal distribution is symmetric with respect to 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(*)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(k-1)}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $r_{\mu}>u$
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim\text{Uniform(0,1)}$
+\end_inset
+
+, let 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(k)}=\boldsymbol{\mu}_{t}^{(*)}$
+\end_inset
+
+.
+ Otherwise, let 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(k)}=\boldsymbol{\mu}_{t}^{(k-1)}$
+\end_inset
+
+ if 
+\begin_inset Formula $r_{\mu}<u$
+\end_inset
+
+, or if 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(*)}\notin{\cal S}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Save 
+\begin_inset Formula $\boldsymbol{\mu}_{t}^{(k)}$
+\end_inset
+
+ for 
+\begin_inset Formula $t=0,\ldots,T$
+\end_inset
+
+; 
+\begin_inset Formula $\sigma_{c}^{(k)}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{c}^{(k)}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{c}^{(k)}$
+\end_inset
+
+, and 
+\begin_inset Formula $\nu_{c}^{(k)}$
+\end_inset
+
+ for 
+\begin_inset Formula $c=\text{3, 2, 1, 0, A, and B}$
+\end_inset
+
+; 
+\begin_inset Formula $\phi^{(k)}$
+\end_inset
+
+; and 
+\begin_inset Formula $\boldsymbol{\beta}^{(k)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $k=k+1$
+\end_inset
+
+ and return to step 2.
+ The algorithm is iterated by repeating steps 2 through 7 until a sufficiently
+ large sample has been obtained from which to approximate the posterior
+ distribution.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
