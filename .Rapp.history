@@ -1,0 +1,485 @@
+mod <- out1
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+idx <- 11
+plot(mod$mu[idx,1,],mod$mu[idx,2,]);points(mu@coords[idx,1],mu@coords[idx,2],col=2,)
+idx <- 1
+plot(mod$mu[idx,1,],mod$mu[idx,2,]);points(mu@coords[idx,1],mu@coords[idx,2],col=2,)
+idx <- 3
+plot(mod$mu[idx,1,],mod$mu[idx,2,]);points(mu@coords[idx,1],mu@coords[idx,2],col=2,)
+image(S,add=TRUE,col="gray85")
+points(mod$mu[idx,1,],mod$mu[idx,2,]);points(mu@coords[idx,1],mu@coords[idx,2],col=2,)
+image(S,col="gray85")
+points(mod$mu[idx,1,],mod$mu[idx,2,]);points(mu@coords[idx,1],mu@coords[idx,2],col=2,)
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.25))
+image(S,col="gray85")
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.25))
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05))
+image(S,col="gray85")
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05))
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)
+idx <- 1
+image(S,col="gray85")
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05))
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)
+s
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 10#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05))#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 11#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05))#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+image(S,col="gray85")
+idx <- 12#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05))#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 12#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 15#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+s$lc[idx]
+idx <- 19#
+s$lc[idx]
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 20#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+image(S,col="gray85")
+idx <- 20#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+T <- 1000  # number of locations#
+idx <- which(values(S)==1)#
+mu <- SpatialPoints(xyFromCell(S,sample(idx,T)))#
+points(mu,pch=3,cex=0.25,col=rgb(0,0,0,0.25))
+sigma <- c(0.01,0.05,0.1)#
+a <- c(0.9,0.75,0.5)#
+rho <- c(0,0.2,0.5)#
+nu <- c(100,100,100)
+s <- mu#
+s$lc <- sample(3,T,replace=TRUE)  # define error class (e.g., Argos location quality)
+for(i in unique(s$lc)){#
+	Sigma <- sigma[i]^2*matrix(c(1,sqrt(a[i])*rho[i],sqrt(a[i])*rho[i],a[i]),2)#
+	Sigma.tilde <- matrix(c(-1,0,0,1),2)%*%Sigma%*%t(matrix(c(-1,0,0,1),2))#
+	idx <- which(s$lc==i)#
+	n <- length(idx)#
+	t.idx <- rbinom(n,1,prob=0.5)  # index for mixture component#
+	s@coords[idx[t.idx==0],] <- s@coords[idx[t.idx==0],]+rmvt(n-sum(t.idx),Sigma,nu[i])#
+	s@coords[idx[t.idx==1],] <- s@coords[idx[t.idx==1],]+rmvt(sum(t.idx),Sigma,nu[i])#
+}
+plot(S,col="gray85")#
+points(mu,pch=3,cex=0.5,col=s$lc)#
+points(s,col=s$lc,cex=0.75)#
+segments(mu@coords[,1],mu@coords[,2],s@coords[,1],s@coords[,2],s$lc,lwd=0.5)
+priors <-  list(sigma=c(0,1),a=c(0,1),rho=c(0,1),nu=c(0,200))  # prior distribution parameters#
+tune <- list(sigma=rep(0.01,3),rho=rep(0.01,3),a=rep(0.01,3),nu=rep(0.01,3),#
+	mu=rep(0.01,3))  # tuning parameters#
+start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+mod <- out1
+mod$keep
+mod$tune
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+idx <- 20#
+s$lc[idx]#
+image(S,col="gray85")
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 2#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 1#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 3#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 5#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=10000)
+keep
+keep.tmp
+keep.tmp$mu
+T.list
+sapply(1:m,function(x) keep.tmp$mu[x]/T.list[[x]])
+sapply(1:m,function(x) keep.tmp$mu[x]/T.list[[x]])/50
+keep.tmp$mu/unlist(T.list)
+(keep.tmp$mu/unlist(T.list)+50)
+keep.tmp$mu/(unlist(T.list)+50)
+# keep.tmp$mu/(unlist(T.list)*50)
+keep.tmp$mu/(unlist(T.list)*50)
+keep.tmp$mu <- keep.tmp$mu/(unlist(T.list)*50)
+keep.tmp
+keep.tmp$mu
+0.44*50
+keep.tmp$sigma
+keep.tmp$sigma/Tb
+T.b <- 50  # frequency of adaptive tuning
+keep.tmp$sigma/Tb
+Tb <- 50  # frequency of adaptive tuning
+keep.tmp$sigma/Tb
+keep.tmp$sigma <- keep.tmp$sigma/Tb
+keep.tmp$a
+keep.tmp$a/Tb
+keep.tmp$a <- keep.tmp$a/Tb
+keep.tmp$rho <- keep.tmp$rho/Tb
+keep.tmp$nu
+keep.tmp$nu <- keep.tmp$nu/Tb
+keep.tmp$nu
+keep.tmp$sigma
+tune$sigma
+sapply(1:m,function(x) get.tune(tune$sigma[x],keep.tmp$sigma[x],k))
+keep.tmp$a
+keep.tmp$rho
+keep.tmp$nu
+keep.tmp$mu
+tune$mu <- sapply(1:m,function(x) get.tune(tune$mu[x],keep.tmp$mu[x],k))
+tune$mu
+tune$a <- sapply(1:m,function(x) get.tune(tune$a[x],keep.tmp$a[x],k))
+tune$a
+tune$rho
+tune$rho <- sapply(1:m,function(x) get.tune(tune$rho[x],keep.tmp$rho[x],k))
+tune$rho
+tune$nu <- sapply(1:m,function(x) get.tune(tune$nu[x],keep.tmp$nu[x],k))
+tune$sigma
+tune$sigma <- sapply(1:m,function(x) get.tune(tune$sigma[x],keep.tmp$sigma[x],k))
+tune$sigma
+Q
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+Q
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+out1$tune
+out1$keep
+mod <- out1
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+keep
+lapply(keep, function(x) x/n.mcmc)
+tune
+keep
+keep <- lapply(keep, function(x) x/n.mcmc)
+keep
+keep$mu
+keep$mu/unlist(T.list)
+Q
+priors <-  list(sigma=c(0,1),a=c(0,1),rho=c(0,1),nu=c(0,200))  # prior distribution parameters#
+tune <- list(sigma=c(0.001,0.01,0.01),rho=rep(0.05,3),a=rep(0.05,3),nu=rep(5,3),#
+	mu=rep(0.05,3))  # tuning parameters#
+start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+out1$keep
+out1$tune
+mod <- out1
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+idx <- 5#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+S <- raster(xmn=-0.1,xmx=1.1,ymn=-0.1,ymx=1.1,res=0.02)
+d <- as.matrix(dist(xyFromCell(S,1:ncell(S))))		#
+phi <- 0.25#
+Sigma <- exp(-d/phi)  #
+Sigma <- t(chol(Sigma))#
+values(S) <- Sigma %*% rnorm(ncell(S))#
+plot(S)
+S <- disaggregate(S,fact=2,method="bilinear")#
+S <- crop(S,raster(xmn=0,xmx=1,ymn=0,ymx=1))
+S <- Which(S<-1)
+S <- Which(S<(-1))
+S <- Which(S<c(-1))
+plot(S)
+S <- raster(xmn=-0.1,xmx=1.1,ymn=-0.1,ymx=1.1,res=0.02)#
+#
+# Guassian random field#
+d <- as.matrix(dist(xyFromCell(S,1:ncell(S))))		#
+phi <- 0.25#
+Sigma <- exp(-d/phi)  #
+Sigma <- t(chol(Sigma))#
+values(S) <- Sigma %*% rnorm(ncell(S))#
+plot(S)
+S <- disaggregate(S,fact=2,method="bilinear")
+S <- crop(S,raster(xmn=0,xmx=1,ymn=0,ymx=1))
+plot(S)
+Which(S<(-1))
+Which(S<-1)
+S <- Which(S<(-1))
+S
+S <- raster(xmn=-0.1,xmx=1.1,ymn=-0.1,ymx=1.1,res=0.02)#
+#
+# Guassian random field#
+d <- as.matrix(dist(xyFromCell(S,1:ncell(S))))		#
+phi <- 0.25#
+Sigma <- exp(-d/phi)  #
+Sigma <- t(chol(Sigma))#
+values(S) <- Sigma %*% rnorm(ncell(S))#
+plot(S)#
+#
+# Rescale to finer resolution#
+S <- disaggregate(S,fact=2,method="bilinear")#
+S <- crop(S,raster(xmn=0,xmx=1,ymn=0,ymx=1))
+plot(S)
+S <- Which(S<(-1))
+plot(S)
+S <- reclassify(S.tmp,matrix(c(1,NA,0,1),2,2,byrow=TRUE))
+plot(S)
+S.tmp <- raster(xmn=-0.1,xmx=1.1,ymn=-0.1,ymx=1.1,res=0.02)#
+#
+# Guassian random field#
+d <- as.matrix(dist(xyFromCell(S,1:ncell(S.tmp))))		#
+phi <- 0.25#
+Sigma <- exp(-d/phi)  #
+Sigma <- t(chol(Sigma))#
+values(S.tmp) <- Sigma %*% rnorm(ncell(S))#
+plot(S.tmp)
+S.tmp <- raster(xmn=-0.1,xmx=1.1,ymn=-0.1,ymx=1.1,res=0.02)
+d <- as.matrix(dist(xyFromCell(S.stmp,1:ncell(S.tmp))))
+d <- as.matrix(dist(xyFromCell(S.tmp,1:ncell(S.tmp))))
+phi <- 0.25#
+Sigma <- exp(-d/phi)  #
+Sigma <- t(chol(Sigma))#
+values(S.tmp) <- Sigma %*% rnorm(ncell(S.tmp))#
+plot(S.tmp)
+S.tmp <- disaggregate(S.tmp,fact=2,method="bilinear")#
+S.tmp <- crop(S.tmp,raster(xmn=0,xmx=1,ymn=0,ymx=1))
+plot(S.tmp)
+S <- Which(S.tmp<(-1))
+S <- reclassify(S,matrix(c(1,NA,0,1),2,2,byrow=TRUE))
+plot(S)
+plot(S.tmp)
+S <- Which(S.tmp<(-1))
+S <- reclassify(S,matrix(c(1,1,0,NA),2,2,byrow=TRUE))
+plot(S)
+T <- 1000  # number of locations#
+idx <- which(values(S)==1)#
+mu <- SpatialPoints(xyFromCell(S,sample(idx,T)))#
+points(mu,pch=3,cex=0.25,col=rgb(0,0,0,0.25))
+sigma <- c(0.01,0.05,0.1)#
+a <- c(0.9,0.75,0.5)#
+rho <- c(0,0.2,0.5)#
+nu <- c(100,100,100)#
+#
+# Simulate complex telemetry error#
+s <- mu#
+s$lc <- sample(3,T,replace=TRUE)  # define error class (e.g., Argos location quality)
+for(i in unique(s$lc)){#
+	Sigma <- sigma[i]^2*matrix(c(1,sqrt(a[i])*rho[i],sqrt(a[i])*rho[i],a[i]),2)#
+	Sigma.tilde <- matrix(c(-1,0,0,1),2)%*%Sigma%*%t(matrix(c(-1,0,0,1),2))#
+	idx <- which(s$lc==i)#
+	n <- length(idx)#
+	t.idx <- rbinom(n,1,prob=0.5)  # index for mixture component#
+	s@coords[idx[t.idx==0],] <- s@coords[idx[t.idx==0],]+rmvt(n-sum(t.idx),Sigma,nu[i])#
+	s@coords[idx[t.idx==1],] <- s@coords[idx[t.idx==1],]+rmvt(sum(t.idx),Sigma,nu[i])#
+}
+plot(S,col="gray85")
+points(mu,pch=3,cex=0.5,col=s$lc)
+points(s,col=s$lc,cex=0.75)
+segments(mu@coords[,1],mu@coords[,2],s@coords[,1],s@coords[,2],s$lc,lwd=0.5)
+priors <-  list(sigma=c(0,1),a=c(0,1),rho=c(0,1),nu=c(0,200))  # prior distribution parameters#
+tune <- list(sigma=c(0.001,0.001,0.001),rho=rep(0.05,3),a=rep(0.075,3),nu=rep(20,3),#
+	mu=rep(0.05,3))  # tuning parameters#
+start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values
+source("constraints.mcmc.R")
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+out1$tune
+out1$keep
+mod <- out1
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+sigma <- c(0.01,0.05,0.1)#
+a <- rep(1,3)  # c(0.9,0.75,0.5)#
+rho <- rep(0,3)  # c(0,0.2,0.5)#
+nu <- c(100,100,100)#
+#
+# Simulate complex telemetry error#
+s <- mu#
+s$lc <- sample(3,T,replace=TRUE)  # define error class (e.g., Argos location quality)#
+#
+for(i in unique(s$lc)){#
+	Sigma <- sigma[i]^2*matrix(c(1,sqrt(a[i])*rho[i],sqrt(a[i])*rho[i],a[i]),2)#
+	Sigma.tilde <- matrix(c(-1,0,0,1),2)%*%Sigma%*%t(matrix(c(-1,0,0,1),2))#
+	idx <- which(s$lc==i)#
+	n <- length(idx)#
+	t.idx <- rbinom(n,1,prob=0.5)  # index for mixture component#
+	s@coords[idx[t.idx==0],] <- s@coords[idx[t.idx==0],]+rmvt(n-sum(t.idx),Sigma,nu[i])#
+	s@coords[idx[t.idx==1],] <- s@coords[idx[t.idx==1],]+rmvt(sum(t.idx),Sigma,nu[i])#
+}#
+#
+plot(S,col="gray85")#
+points(mu,pch=3,cex=0.5,col=s$lc)#
+points(s,col=s$lc,cex=0.75)#
+segments(mu@coords[,1],mu@coords[,2],s@coords[,1],s@coords[,2],s$lc,lwd=0.5)
+priors <-  list(sigma=c(0,1),a=c(0,1),rho=c(0,1),nu=c(0,200))  # prior distribution parameters#
+tune <- list(sigma=c(0.001,0.001,0.001),rho=rep(0.05,3),a=rep(0.075,3),nu=rep(20,3),#
+	mu=rep(0.05,3))  # tuning parameters#
+start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values#
+#
+source("constraints.mcmc.R")#
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+mod <- out1
+mod$keep
+out1$tune
+tune <- list(sigma=c(0.001,0.01,0.01),rho=rep(0.1,3),a=rep(0.1,3),nu=rep(40,3),#
+	mu=rep(0.04,3))  # tuning parameters
+start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values
+source("constraints.mcmc.R")#
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+out1$keep
+out1$tune
+priors <-  list(sigma=c(0,1),a=c(0,1),rho=c(0,1),nu=c(0,200))  # prior distribution parameters#
+tune <- list(sigma=c(0.001,0.006,0.008),rho=rep(0.1,3),a=c(0.13,0.1,0.12),nu=rep(70,3),#
+	mu=rep(0.02,0.03,0.07))  # tuning parameters#
+start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values
+source("constraints.mcmc.R")#
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+warnings()
+tune <- list(sigma=c(0.001,0.006,0.008),rho=rep(0.1,3),a=c(0.13,0.1,0.12),nu=rep(70,3),#
+	mu=c(0.02,0.03,0.07))  # tuning parameters
+source("constraints.mcmc.R")#
+out1 <- constraints.mcmc(s,S,priors,start,tune,n.mcmc=1000)
+out1$tune
+out1$keep
+mod <- out1
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+out2 <- constraints.mcmc(s,S,priors,out1$end,out1$tune,n.mcmc=1000)
+out3 <- constraints.mcmc(s,S,priors,out2$end,out2$tune,n.mcmc=1000)
+out4 <- constraints.mcmc(s,S,priors,out3$end,out3$tune,n.mcmc=10000)
+mod <- out4
+mod$keep
+mod$tune
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
+matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
+matplot(mod$sigma,type="l",lty=1);abline(h=sigma,col=1:5,lty=3)
+idx <- 5#
+s$lc[idx]
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 1#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 2#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 3#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 4#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 5#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 6#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 7#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 8#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 9#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)
+idx <- 10#
+s$lc[idx]#
+image(S,col="gray85")#
+points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)#
+points(mu@coords[idx,1],mu@coords[idx,2],col=2,pch=3)#
+points(s@coords[idx,1],s@coords[idx,2],col=3,pch=3,xpd=TRUE)

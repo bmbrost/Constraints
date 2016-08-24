@@ -95,7 +95,7 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 
 	lc.list <- sapply(sort(unique(lc)),function(x) which(lc==x),simplify=FALSE)
 	s.list <- lapply(lc.list,function(x) s@coords[x,])
-	T.list <- lapply(lc.list,length)
+	T.lc <- unlist(lapply(lc.list,length))
 	m <- length(lc.list)  # number of error classes
 
 	mu.star <- matrix(0,T,2)
@@ -165,13 +165,14 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 		if(k%%100==0) cat(k,"");flush.console()
 
 		if(adapt==TRUE & k%%Tb==0) {  # adaptive tuning
-# browser()
-			keep.tmp$mu <- keep.tmp$mu/(unlist(T.list)*Tb)
-			keep.tmp$sigma <- keep.tmp$sigma/Tb
-			keep.tmp$a <- keep.tmp$a/Tb
-			keep.tmp$rho <- keep.tmp$rho/Tb
-			keep.tmp$nu <- keep.tmp$nu/Tb
-			
+			# browser()
+			keep.tmp <- lapply(keep.tmp,function(x) x/T.lc)
+			keep.tmp$mu <- keep.tmp$mu/Tb
+			# keep.tmp$mu <- keep.tmp$mu/(unlist(T.list)*Tb)			
+			# keep.tmp$sigma <- keep.tmp$sigma/Tb
+			# keep.tmp$a <- keep.tmp$a/Tb
+			# keep.tmp$rho <- keep.tmp$rho/Tb
+			# keep.tmp$nu <- keep.tmp$nu/Tb
 			tune$sigma <- sapply(1:m,function(x) get.tune(tune$sigma[x],keep.tmp$sigma[x],k))
 			tune$a <- sapply(1:m,function(x) get.tune(tune$a[x],keep.tmp$a[x],k))
 			tune$rho <- sapply(1:m,function(x) get.tune(tune$rho[x],keep.tmp$rho[x],k))
@@ -180,25 +181,22 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 			keep.tmp <- lapply(keep.tmp,function(x) x*0)
 	   	} 	
 
-			
-		###
-		###  Sample components of Sigma
-		###
-
 		sigma.star <- rnorm(m,sigma,tune$sigma)  # proposals for sigma
 		a.star <- rnorm(m,a,tune$a)  # proposals for a
 		rho.star <- rnorm(m,rho,tune$rho)  # proposals for rho
 		nu.star <- rnorm(m,nu,tune$nu)  # proposals for nu
 		
 # browser()				
-		for(i in 1:m){ #Loop to iterate over error classes: Appendix B, step 2(f)
+		for(i in 1:m){  # loop over error classes
 # i <- 1
 			lc.idx <- lc.list[[i]] #Index of locations in error class i
 			s.tmp <- s[lc.idx,]
 			mu.tmp <- mu[lc.idx,]
-			T.tmp <- T.list[[i]]
-				
-			### Sample sigma: Appendix B, step 2(b)
+			T.tmp <- T.lc[i]
+			
+			###	
+			### Sample sigma
+			###
 
 			if(sigma.star[i]>priors$sigma[1] & sigma.star[i]<priors$sigma[2]){
 				mh.star.sigma <- sum(get.dmvt2(s.tmp,mu.tmp,sigma.star[i],a[i],rho[i],nu[i]))
@@ -210,7 +208,9 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 				}
 			}
 
+			###
 			### Sample a
+			###
 
 			if(a.star[i]>priors$a[1] & a.star[i]<priors$a[2]){
 				mh.star.a <- sum(get.dmvt2(s.tmp,mu.tmp,sigma[i],a.star[i],rho[i],nu[i]))
@@ -222,7 +222,9 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 				}
 			}
 
+			###
 			### Sample rho
+			###
 
 			if(rho.star[i]>priors$rho[1] & rho.star[i]<priors$rho[2]){
 				mh.star.rho <- sum(get.dmvt2(s.tmp,mu.tmp,sigma[i],a[i],rho.star[i],nu[i]))
@@ -234,7 +236,9 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 				}
 			}
 			
+			###
 			### Sample nu
+			###
 
 			if(nu.star[i]>priors$nu[1] & nu.star[i]<priors$nu[2]){
 				mh.star.nu <- sum(get.dmvt2(s.tmp,mu.tmp,sigma[i],a[i],rho[i],nu.star[i]))
@@ -251,6 +255,11 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 			###
 	 # browser()		
 			
+			# cell.idx <- which(!is.na(values(S)))
+			# cell.xy <- xyFromCell(S,cell.idx)
+			# sapply(1:T,function(x) sample(1:nrow(cell.xy),1,prob=
+				# dnorm(s[x,1],cell.xy[,1],tune$mu[i])*dnorm(s[x,2],cell.xy[,2],tune$mu[i])))
+									
 			mu.star[lc.idx,1] <- rnorm(T.tmp,mu.tmp[,1],tune$mu[i]) # proposals for mu
 			mu.star[lc.idx,2] <- rnorm(T.tmp,mu.tmp[,2],tune$mu[i]) # proposals for mu
 
@@ -281,15 +290,13 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 		nu.save[k,] <- nu
 	}  # end loop through MCMC iterations (k)
 	
-	t.mcmc.end <- Sys.time()
-
 
 	###
 	###  Write Output 
 	###
 # browser()	
 	keep <- lapply(keep, function(x) x/n.mcmc)
-	keep$mu <- keep$mu/unlist(T.list)
+	keep$mu <- keep$mu/T.lc
 	
 	t.end <- Sys.time()
 	cat(paste("\n\nEnd time:",t.end))
