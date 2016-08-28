@@ -12,41 +12,14 @@ ls()
 ### Simulate irregular spatial support
 #######################################################################
 
-S <- SpatialPoints(matrix(runif(20,min=0.2,max=0.8),ncol=2))
+S <- SpatialLines(list(Lines(list(Line(matrix(runif(20,min=0.2,max=0.8),ncol=2))),1)))
+# S <- SpatialPoints(matrix(runif(20,min=0.2,max=0.8),ncol=2))
 S <- gBuffer(S,byid=TRUE,width=0.05)
-S <- gUnaryUnion(S)
+# S <- gUnaryUnion(S)
 plot(S)
-
-# S <- lapply(1:10,function(x) {
-	# xy <- runif(2,min=0.2,max=0.7)
-	# Polygon(matrix(c(xy,xy+c(0.1,0),xy+0.1,xy+c(0,0.1),xy),ncol=2,byrow=TRUE))
-# })
-# S <- lapply(1:10,function(x) Polygons(list(S[[x]]),x))
-# S <- gUnaryUnion(SpatialPolygons(S))
-# plot(S)
 
 S <- rasterize(S,raster(xmn=0,xmx=1,ymn=0,ymx=1,res=0.005))
 plot(S)
-
-# # Spatial support of point process
-# S.tmp <- raster(xmn=-0.1,xmx=1.1,ymn=-0.1,ymx=1.1,res=0.02)
-
-# # Guassian random field
-# d <- as.matrix(dist(xyFromCell(S.tmp,1:ncell(S.tmp))))		
-# phi <- 0.25
-# Sigma <- exp(-d/phi)  
-# Sigma <- t(chol(Sigma))
-# values(S.tmp) <- Sigma %*% rnorm(ncell(S.tmp))
-# plot(S.tmp)
-
-# # Rescale to finer resolution
-# S.tmp <- disaggregate(S.tmp,fact=2,method="bilinear")
-# S.tmp <- crop(S.tmp,raster(xmn=0,xmx=1,ymn=0,ymx=1))
-
-# S <- Which(S.tmp>0)
-# S <- Which(S.tmp<(-1))
-# S <- reclassify(S,matrix(c(1,1,0,NA),2,2,byrow=TRUE))
-# plot(S)
 
 
 #######################################################################
@@ -94,8 +67,8 @@ segments(mu@coords[,1],mu@coords[,2],s@coords[,1],s@coords[,2],s$lc,lwd=0.5)
 #######################################################################
 
 priors <-  list(sigma=c(0,1),a=c(0,1),rho=c(0,1),nu=c(0,100))  # prior distribution parameters
-tune <- list(sigma=c(0.0009,0.003,0.008),rho=c(0.2,0.1,0.18),a=c(0.11,0.09,0.13),nu=rep(130,3),
-	mu=c(0.01,0.03,0.07))  # tuning parameters
+tune <- list(sigma=c(0.001,0.005,0.013),rho=c(0.06,0.22,0.13),a=c(0.1,0.1,0.14),nu=c(19,53,0.65),
+	mu=c(0.01,0.05,0.08))  # tuning parameters
 start <- list(mu=mu@coords,sigma=sigma,a=a,rho=rho,nu=nu)  # starting values
 
 source("constraints.mcmc.R")
@@ -112,7 +85,7 @@ matplot(mod$a,type="l",lty=1);abline(h=a,col=1:5,lty=3)
 matplot(mod$rho,type="l",lty=1);abline(h=rho,col=1:5,lty=3)
 matplot(mod$nu,type="l",lty=1);abline(h=nu,col=1:5,lty=3)
 
-idx <- 9
+idx <- 3
 s$lc[idx]
 image(S,col="gray85")
 points(mod$mu[idx,1,],mod$mu[idx,2,],pch=19,col=rgb(0,0,0,0.05),cex=0.25)

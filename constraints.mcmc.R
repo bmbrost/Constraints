@@ -50,7 +50,7 @@
 #
 #
 
-constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
+constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE,sampleS=FALSE){
 		
 	t.start <- Sys.time()
 	cat(paste("Start time:",t.start,"\n"))
@@ -89,31 +89,33 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 	# browser()
 	T <- nrow(s)  # number of telemetry locations	
 	
-	# Index of locations in each error class
-	
-	lc <- as.numeric(s$lc)  # error classes
+	# Index of locations in each error class	
+	# lc <- as.numeric(s$lc)  # error classes
 
-	lc.list <- sapply(sort(unique(lc)),function(x) which(lc==x),simplify=FALSE)
-	s.list <- lapply(lc.list,function(x) s@coords[x,])
-	T.lc <- unlist(lapply(lc.list,length))
+	lc.list <- sapply(sort(unique(s$lc)),function(x) which(s$lc==x),simplify=FALSE) # index of telemetry locations in each error class
+
+	s <- s@coords  # coordinates of telemetry locations
+	s.list <- lapply(lc.list,function(x) s[x,])  # list of telemetry locations by error class
+	T.lc <- unlist(lapply(lc.list,length))  # number of telemetry locations per error class
 	m <- length(lc.list)  # number of error classes
 
-	mu.star <- matrix(0,T,2)
-		
-	s <- s@coords  # coordinates of telemetry locations
+	mu.star <- matrix(0,T,2)  # container for proposal values for mu
+
+	if(sampleS==TRUE){
+		cell.idx <- which(!is.na(values(S)))  # index of cells in S
+		cell.xy <- xyFromCell(S,cell.idx)	 # xy coords of cells in S
+	}
+
 				
 	###
 	### Starting values
 	###
 	
 	mu <- start$mu  # true animal locations
-	# cell.idx <- extract(S,mu,cellnumbers=TRUE)[,1]  # cells in S corresponding to mu
-
-	# observation model parameters
-	sigma <- start$sigma
-	a <- start$a
-	rho <- start$rho
-	nu <- start$nu
+	sigma <- start$sigma  # observation model parameters
+	a <- start$a  # observation model parameters
+	rho <- start$rho  # observation model parameters
+	nu <- start$nu  # observation model parameters
 
 
 	###
@@ -149,16 +151,15 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 	rho.save <- matrix(0,n.mcmc,m)
 	nu.save <- matrix(0,n.mcmc,m)
 	
-	keep <- list(sigma=rep(0,m),a=rep(0,m),rho=rep(0,m),nu=rep(0,m),mu=rep(0,3))
-	keep.tmp <- keep  # for adaptive tuning
-	Tb <- 50  # frequency of adaptive tuning
-	
+		
 	###
 	###  Begin MCMC Loop 
 	###
 
-	t.mu.update <- 0
-	t.mcmc.start <- Sys.time()
+	keep <- list(sigma=rep(0,m),a=rep(0,m),rho=rep(0,m),nu=rep(0,m),mu=rep(0,3))
+	keep.tmp <- keep  # for adaptive tuning
+	Tb <- 50  # frequency of adaptive tuning
+
 	cat("\nEntering MCMC Loop....\n")
 
 	for(k in 1:n.mcmc){ #Loop to iterate MCMC algorithm: Appendix B, step 7
@@ -166,8 +167,8 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 
 		if(adapt==TRUE & k%%Tb==0) {  # adaptive tuning
 			# browser()
-			keep.tmp <- lapply(keep.tmp,function(x) x/T.lc)
-			keep.tmp$mu <- keep.tmp$mu/Tb
+			keep.tmp <- lapply(keep.tmp,function(x) x/Tb)
+			keep.tmp$mu <- keep.tmp$mu/T.lc
 			# keep.tmp$mu <- keep.tmp$mu/(unlist(T.list)*Tb)			
 			# keep.tmp$sigma <- keep.tmp$sigma/Tb
 			# keep.tmp$a <- keep.tmp$a/Tb
@@ -255,13 +256,15 @@ constraints.mcmc <- function(s,S,priors,start,tune,n.mcmc,adapt=TRUE){
 			###
 	 # browser()		
 			
-			# cell.idx <- which(!is.na(values(S)))
-			# cell.xy <- xyFromCell(S,cell.idx)
-			# sapply(1:T,function(x) sample(1:nrow(cell.xy),1,prob=
-				# dnorm(s[x,1],cell.xy[,1],tune$mu[i])*dnorm(s[x,2],cell.xy[,2],tune$mu[i])))
-									
-			mu.star[lc.idx,1] <- rnorm(T.tmp,mu.tmp[,1],tune$mu[i]) # proposals for mu
-			mu.star[lc.idx,2] <- rnorm(T.tmp,mu.tmp[,2],tune$mu[i]) # proposals for mu
+			if(sampleS==TRUE){  # sample proposals for mu from S
+				idx <-  sapply(1:T,function(x) sample(1:nrow(cell.xy),1,prob=
+					dnorm(s[x,1],cell.xy[,1],tune$mu[i])*dnorm(s[x,2],cell.xy[,2],tune$mu[i])))
+				mu.star <- cell.xy[idx,]
+			}
+
+			if(sampleS==FALSE){  # random walk proposals for mu
+				mu.star[lc.idx,] <- matrix(rnorm(T.tmp*2,mu.tmp,tune$mu[i]),T.tmp,2)			
+			}						
 
 			idx.tmp <- lc.idx[which(!is.na(extract(S,mu.star[lc.idx,])))]
 		
